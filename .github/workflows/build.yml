@@ -24,10 +24,11 @@ jobs:
                     java-version: ${{ matrix.java }}
                     cache: maven
 
-            -   name: Build
-                run: mvn -ntp -B -Pcoverage verify
+                # Documented preparation step from VERIFYING.md: populates the local
+                # Maven repository so that verify.sh can run fully offline.
+            -   name: Populate Maven cache
+                run: mvn -q -DskipTests package
 
-            -   name: Upload coverage reports to Codecov
-                uses: codecov/codecov-action@v3
-                env:
-                    CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
+                # Single verification entry point. No extra flags, no hidden parameters.
+            -   name: Verify
+                run: sh ./verify.sh
