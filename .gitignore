@@ -42,3 +42,7 @@ coverage/
 .vite/
 .turbo/
 *.tsbuildinfo
+
+# verify.sh dependency warm-up marker (online -> offline boundary)
+.verify-cache/
+.verify/

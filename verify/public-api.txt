@@ -1,0 +1,236 @@
+===== com.ethlo.time.DateTime
+Compiled from "DateTime.java"
+public class com.ethlo.time.DateTime implements java.time.temporal.TemporalAccessor {
+  public com.ethlo.time.DateTime(com.ethlo.time.Field, int, int, int, int, int, int, int, com.ethlo.time.TimezoneOffset, int);
+  public com.ethlo.time.DateTime(com.ethlo.time.Field, int, int, int, int, int, int, int, com.ethlo.time.TimezoneOffset, int, int);
+  public static com.ethlo.time.DateTime of(int, int, int, int, int, int, com.ethlo.time.TimezoneOffset);
+  public static com.ethlo.time.DateTime of(int, int, int, int, int, int, int, com.ethlo.time.TimezoneOffset, int);
+  public static com.ethlo.time.DateTime ofYear(int);
+  public static com.ethlo.time.DateTime ofYearMonth(int, int);
+  public static com.ethlo.time.DateTime ofDate(int, int, int);
+  public static com.ethlo.time.DateTime of(int, int, int, int, int, com.ethlo.time.TimezoneOffset);
+  public static com.ethlo.time.DateTime of(java.time.OffsetDateTime);
+  public boolean includesGranularity(com.ethlo.time.Field);
+  public int getYear();
+  public int getMonth();
+  public int getDayOfMonth();
+  public int getHour();
+  public int getMinute();
+  public int getSecond();
+  public int getNano();
+  public java.util.Optional<com.ethlo.time.TimezoneOffset> getOffset();
+  public java.time.Year toYear();
+  public java.time.YearMonth toYearMonth();
+  public java.time.LocalDateTime toLocalDatetime();
+  public java.time.OffsetDateTime toOffsetDatetime();
+  public java.time.LocalDate toLocalDate();
+  public com.ethlo.time.Field getMostGranularField();
+  public java.lang.String toString(com.ethlo.time.Field);
+  public java.lang.String toString(int);
+  public int getFractionDigits();
+  public java.lang.String toString();
+  public boolean equals(java.lang.Object);
+  public int hashCode();
+  public boolean isSupported(java.time.temporal.TemporalField);
+  public long getLong(java.time.temporal.TemporalField);
+  public java.time.Instant toInstant();
+  public int getParseLength();
+  public java.time.LocalTime toLocalTime();
+}
+===== com.ethlo.time.DateTimeParser
+Compiled from "DateTimeParser.java"
+public interface com.ethlo.time.DateTimeParser {
+  public abstract com.ethlo.time.DateTime parse(java.lang.String, java.text.ParsePosition) throws java.time.DateTimeException;
+  public default com.ethlo.time.DateTime parse(java.lang.String) throws java.time.DateTimeException;
+}
+===== com.ethlo.time.DateTimeParsers
+Compiled from "DateTimeParsers.java"
+public class com.ethlo.time.DateTimeParsers {
+  public com.ethlo.time.DateTimeParsers();
+  public static com.ethlo.time.DateTimeParser of(com.ethlo.time.token.DateTimeToken...);
+  public static com.ethlo.time.DateTimeParser rfc3339();
+  public static com.ethlo.time.DateTimeParser localDate();
+  public static com.ethlo.time.DateTimeParser localTime();
+}
+===== com.ethlo.time.DateTimeTokens
+Compiled from "DateTimeTokens.java"
+public class com.ethlo.time.DateTimeTokens {
+  public com.ethlo.time.DateTimeTokens();
+  public static com.ethlo.time.token.DateTimeToken separators(char...);
+  public static com.ethlo.time.token.DateTimeToken digits(com.ethlo.time.Field, int);
+  public static com.ethlo.time.token.DateTimeToken fractions();
+  public static com.ethlo.time.token.DateTimeToken zoneOffset();
+}
+===== com.ethlo.time.Duration
+Compiled from "Duration.java"
+public class com.ethlo.time.Duration implements java.lang.Comparable<com.ethlo.time.Duration> {
+  public static final com.ethlo.time.Duration ZERO;
+  public static final int NANOS_PER_SECOND;
+  public static final long SECONDS_PER_MINUTE;
+  public static final long SECONDS_PER_HOUR;
+  public static final long SECONDS_PER_DAY;
+  public static final long SECONDS_PER_WEEK;
+  public static final long NANOS_PER_MICROSECOND;
+  public static final long NANOS_PER_MILLISECOND;
+  public static com.ethlo.time.Duration ofMillis(long);
+  public static com.ethlo.time.Duration ofMicros(long);
+  public static com.ethlo.time.Duration ofNanos(long);
+  public static com.ethlo.time.Duration ofWeeks(long);
+  public static com.ethlo.time.Duration ofDays(long);
+  public static com.ethlo.time.Duration ofHours(long);
+  public static com.ethlo.time.Duration ofMinutes(long);
+  public static com.ethlo.time.Duration ofSeconds(long);
+  public static com.ethlo.time.Duration of(long, int);
+  public long getSeconds();
+  public int getNanos();
+  public java.lang.String normalized();
+  public java.lang.String normalized(com.ethlo.time.DurationUnit);
+  public java.time.Instant timeline();
+  public java.time.Instant timeline(java.time.Instant);
+  public com.ethlo.time.Duration add(com.ethlo.time.Duration);
+  public com.ethlo.time.Duration subtract(com.ethlo.time.Duration);
+  public com.ethlo.time.Duration negate();
+  public com.ethlo.time.Duration abs();
+  public boolean equals(java.lang.Object);
+  public int hashCode();
+  public java.lang.String toString();
+  public int compareTo(com.ethlo.time.Duration);
+  public com.ethlo.time.Duration plusHours(long);
+  public com.ethlo.time.Duration plusMinutes(long);
+  public com.ethlo.time.Duration plusSeconds(long);
+  public com.ethlo.time.Duration plusNanos(long);
+  public int compareTo(java.lang.Object);
+}
+===== com.ethlo.time.DurationUnit
+Compiled from "DurationUnit.java"
+public final class com.ethlo.time.DurationUnit extends java.lang.Enum<com.ethlo.time.DurationUnit> {
+  public static final com.ethlo.time.DurationUnit WEEKS;
+  public static final com.ethlo.time.DurationUnit DAYS;
+  public static final com.ethlo.time.DurationUnit HOURS;
+  public static final com.ethlo.time.DurationUnit MINUTES;
+  public static final com.ethlo.time.DurationUnit SECONDS;
+  public static com.ethlo.time.DurationUnit[] values();
+  public static com.ethlo.time.DurationUnit valueOf(java.lang.String);
+}
+===== com.ethlo.time.Field
+Compiled from "Field.java"
+public final class com.ethlo.time.Field extends java.lang.Enum<com.ethlo.time.Field> {
+  public static final com.ethlo.time.Field YEAR;
+  public static final com.ethlo.time.Field MONTH;
+  public static final com.ethlo.time.Field DAY;
+  public static final com.ethlo.time.Field HOUR;
+  public static final com.ethlo.time.Field MINUTE;
+  public static final com.ethlo.time.Field SECOND;
+  public static final com.ethlo.time.Field NANO;
+  public static final com.ethlo.time.Field ZONE_OFFSET;
+  public static com.ethlo.time.Field[] values();
+  public static com.ethlo.time.Field valueOf(java.lang.String);
+  public static com.ethlo.time.Field valueOf(java.lang.Class<? extends java.time.temporal.Temporal>);
+  public static com.ethlo.time.Field of(java.time.temporal.TemporalField);
+  public int getRequiredLength();
+}
+===== com.ethlo.time.ITU
+Compiled from "ITU.java"
+public class com.ethlo.time.ITU {
+  public static java.time.OffsetDateTime parseDateTime(java.lang.String);
+  public static com.ethlo.time.Duration parseDuration(java.lang.String);
+  public static com.ethlo.time.Duration parseDuration(java.lang.String, int);
+  public static java.time.OffsetDateTime parseDateTime(java.lang.String, java.text.ParsePosition);
+  public static com.ethlo.time.DateTime parseLenient(java.lang.String);
+  public static com.ethlo.time.DateTime parseLenient(java.lang.String, com.ethlo.time.ParseConfig);
+  public static com.ethlo.time.DateTime parseLenient(java.lang.String, com.ethlo.time.ParseConfig, java.text.ParsePosition);
+  public static boolean isValid(java.lang.String);
+  public static java.lang.String formatUtc(java.time.OffsetDateTime, int);
+  public static java.lang.String formatUtc(java.time.OffsetDateTime, com.ethlo.time.Field);
+  public static java.lang.String format(java.time.OffsetDateTime);
+  public static java.lang.String format(java.time.OffsetDateTime, int);
+  public static java.lang.String formatUtc(java.time.OffsetDateTime);
+  public static java.lang.String formatUtcMilli(java.time.OffsetDateTime);
+  public static java.lang.String formatUtcMicro(java.time.OffsetDateTime);
+  public static java.lang.String formatUtcNano(java.time.OffsetDateTime);
+  public static void parse(java.lang.String, com.ethlo.time.TemporalConsumer);
+  public static <T> T parse(java.lang.String, com.ethlo.time.TemporalHandler<T>);
+  public static boolean isValid(java.lang.String, com.ethlo.time.TemporalType...);
+}
+===== com.ethlo.time.LeapSecondException
+Compiled from "LeapSecondException.java"
+public class com.ethlo.time.LeapSecondException extends java.time.DateTimeException {
+  public com.ethlo.time.LeapSecondException(java.time.OffsetDateTime, int, boolean);
+  public int getSecondsInMinute();
+  public java.time.OffsetDateTime getNearestDateTime();
+  public boolean isVerifiedValidLeapYearMonth();
+}
+===== com.ethlo.time.ParseConfig
+Compiled from "ParseConfig.java"
+public class com.ethlo.time.ParseConfig {
+  public static final com.ethlo.time.ParseConfig DEFAULT;
+  public static final com.ethlo.time.ParseConfig STRICT;
+  public char[] getFractionSeparators();
+  public com.ethlo.time.ParseConfig withDateTimeSeparators(char...);
+  public com.ethlo.time.ParseConfig withFractionSeparators(char...);
+  public com.ethlo.time.ParseConfig withFailOnTrailingJunk(boolean);
+  public boolean isFailOnTrailingJunk();
+  public char[] getDateTimeSeparators();
+  public boolean isDateTimeSeparator(char);
+  public boolean isFractionSeparator(char);
+  public java.lang.String toString();
+}
+===== com.ethlo.time.TemporalConsumer
+Compiled from "TemporalConsumer.java"
+public interface com.ethlo.time.TemporalConsumer {
+  public default void handle(java.time.LocalDateTime);
+  public default void handle(java.time.LocalDate);
+  public default void handle(java.time.YearMonth);
+  public default void handle(java.time.Year);
+  public default void handle(java.time.OffsetDateTime);
+  public default void fallback(java.time.temporal.Temporal);
+}
+===== com.ethlo.time.TemporalHandler
+Compiled from "TemporalHandler.java"
+public interface com.ethlo.time.TemporalHandler<T> {
+  public default T handle(java.time.LocalDateTime);
+  public default T handle(java.time.LocalDate);
+  public default T handle(java.time.YearMonth);
+  public default T handle(java.time.Year);
+  public default T handle(java.time.OffsetDateTime);
+  public default T fallback(java.time.temporal.Temporal);
+}
+===== com.ethlo.time.TemporalType
+Compiled from "TemporalType.java"
+public final class com.ethlo.time.TemporalType extends java.lang.Enum<com.ethlo.time.TemporalType> {
+  public static final com.ethlo.time.TemporalType YEAR;
+  public static final com.ethlo.time.TemporalType YEAR_MONTH;
+  public static final com.ethlo.time.TemporalType LOCAL_DATE;
+  public static final com.ethlo.time.TemporalType LOCAL_DATE_TIME;
+  public static final com.ethlo.time.TemporalType OFFSET_DATE_TIME;
+  public static com.ethlo.time.TemporalType[] values();
+  public static com.ethlo.time.TemporalType valueOf(java.lang.String);
+}
+===== com.ethlo.time.TimezoneOffset
+Compiled from "TimezoneOffset.java"
+public class com.ethlo.time.TimezoneOffset {
+  public static final com.ethlo.time.TimezoneOffset UTC;
+  public static com.ethlo.time.TimezoneOffset ofHoursMinutes(int, int);
+  public static com.ethlo.time.TimezoneOffset ofTotalSeconds(int);
+  public static com.ethlo.time.TimezoneOffset of(java.time.ZoneOffset);
+  public int getHours();
+  public int getMinutes();
+  public int getTotalSeconds();
+  public java.time.ZoneOffset toZoneOffset();
+  public boolean equals(java.lang.Object);
+  public int hashCode();
+  public java.lang.String toString();
+  public int getRequiredLength();
+}
+===== com.ethlo.time.token.ConfigurableDateTimeParser
+Compiled from "ConfigurableDateTimeParser.java"
+public class com.ethlo.time.token.ConfigurableDateTimeParser implements com.ethlo.time.DateTimeParser {
+  public static com.ethlo.time.DateTimeParser of(com.ethlo.time.token.DateTimeToken...);
+  public com.ethlo.time.DateTime parse(java.lang.String, java.text.ParsePosition);
+}
+===== com.ethlo.time.token.DateTimeToken
+Compiled from "DateTimeToken.java"
+public interface com.ethlo.time.token.DateTimeToken {
+  public abstract int read(java.lang.String, java.text.ParsePosition);
+  public default com.ethlo.time.Field getField();
+}

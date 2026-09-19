@@ -1,0 +1,7 @@
+# Expected Maven coordinates and packaging asserted by the api-compat stage.
+# Regenerate with verify/regen-baselines.sh after an intentional release-coordinate change.
+groupId=com.ethlo.time
+artifactId=itu
+packaging=bundle
+version=1.15.0-SNAPSHOT
+finalName=itu-1.15.0-SNAPSHOT

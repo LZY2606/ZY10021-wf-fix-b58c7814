@@ -241,6 +241,10 @@ limitations under the License.
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <gpg.skip>true</gpg.skip>
+        <!-- Pinned build instant so that every clean build of the same commit produces byte-identical
+             jars: deterministic zip entry timestamps and no Bnd-LastModified header. Overridable
+             only via -Dproject.build.outputTimestamp=... (see verify.sh and VERIFYING.md). -->
+        <project.build.outputTimestamp>2020-01-01T00:00:00Z</project.build.outputTimestamp>
         <!-- Version advertised in the generated README. Kept separate from project.version, which stays
              on -SNAPSHOT because the release version comes from the git tag. Bump on each release. -->
         <itu.released.version>1.15.0</itu.released.version>
@@ -364,6 +368,10 @@ limitations under the License.
                                 </goals>
                                 <configuration>
                                     <jvmVersion>9</jvmVersion>
+                                    <!-- Allow re-running package without `clean`: otherwise a
+                                         stale target/modules jar fails the build even though the
+                                         content is regenerated. -->
+                                    <overwriteExistingFiles>true</overwriteExistingFiles>
                                     <module>
                                         <moduleInfo>
                                             <name>com.ethlo.time</name>
